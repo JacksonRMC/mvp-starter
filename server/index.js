@@ -8,12 +8,15 @@ var app = express();
 
 // UNCOMMENT FOR REACT
 app.use(express.static(__dirname + '/../react-client/dist'));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded( {extended: true}));
 
-// UNCOMMENT FOR ANGULAR
-// app.use(express.static(__dirname + '/../angular-client'));
-// app.use(express.static(__dirname + '/../node_modules'));
+app.post('/repos', function(req, res) {
+	console.log('I am in post time')
+})
 
 app.get('/items', function (req, res) {
+	console.log('sdflhsdkfh')
   items.selectAll(function(err, data) {
     if(err) {
       res.sendStatus(500);
