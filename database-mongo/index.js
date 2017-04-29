@@ -12,8 +12,10 @@ db.once('open', function() {
 });
 
 var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+  id: String,
+  time_stamp: String,
+  url: String,
+  image: String
 });
 
 var Item = mongoose.model('Item', itemSchema);
@@ -25,7 +27,10 @@ var selectAll = function(callback) {
     } else {
       callback(null, items);
     }
-  });
+  }).
+  limit(10)
+  .sort({ time_stamp: 1 });
 };
 
 module.exports.selectAll = selectAll;
+module.exports.Item = Item;

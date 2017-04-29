@@ -29,12 +29,14 @@ class App extends React.Component {
       type: 'POST',
       data: {"term": q},
       dataType: 'application/json',
+      contentType: "json",
+      error: (err) => {
+        console.log(err)
+      },
       success: (data) => {
         console.log(data)
-      },
-      error: (err) => {
-        console.log('I am getting here')
       }
+
     })
   }
 
