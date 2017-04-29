@@ -21,18 +21,19 @@ class App extends React.Component {
   }
 
   clickhandler(term) {
-     var q = this.state.term
+    
+    var q = this.state.term
 
     $.ajax({
-      url: 'http://127.0.0.1:1128/repos',
+      url: 'http://127.0.0.1:3000/repos',
       type: 'POST',
-      data: {"term": `${term}`},
+      data: {"term": q},
       dataType: 'application/json',
       success: (data) => {
         console.log(data)
       },
       error: (err) => {
-        console.log('err')
+        console.log('I am getting here')
       }
     })
   }
