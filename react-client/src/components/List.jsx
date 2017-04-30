@@ -7,10 +7,10 @@ const List = (props) => (
     <ul>
    
     There are { props.items.length } items.
-    { props.items.map((item, index) => <li key={index}> 
-   	<img src={item.image} />
-    <h4 > Pie  </h4> 
-    </li>)}
+    { props.items.map((item, index) => <ul key={index}> 
+   	<a  href={item.url}> <img src={item.image} /> </a>
+    <h4>  Pie  </h4> 
+    </ul>)}
   	</ul>
   </div>
 )

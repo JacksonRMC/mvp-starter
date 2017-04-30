@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var rp = require('request-promise');
 var Promise = require('bluebird');
 var items = require('../database-mongo');
-console.log(items )
+
    
 var app = express();
 
@@ -13,13 +13,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( {extended: true} ));
 
 app.post('/repos', function(req, res) {
-  console.log(req)
-  var result = req.body.term
+
+  var searches = ['pizza', 'cheese', 'ice cream', 'bacon', 'skiing'];
+
+  var result = searches[Math.floor(Math.random() * 5)];
+  console.log(result)
+  
   
   var options = {
     uri: `http://api.giphy.com/v1/gifs/search?q=${result}&api_key=dc6zaTOxFJmzC`
   };
-   
+
   rp(options)
   .then((repos) => {
 
@@ -27,7 +31,7 @@ app.post('/repos', function(req, res) {
     
     data.forEach((x) => {
     var obj = {
-      id: x.id, 
+      id: "Pony", 
       time_stamp: new Date().getTime(),
       url: x.url,
       image: x.images.fixed_height_small.url

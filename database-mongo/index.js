@@ -29,7 +29,7 @@ var selectAll = function(callback) {
     }
   }).
   limit(10)
-  .sort({ time_stamp: 1 });
+  .sort({ time_stamp: -1 });
 };
 
 module.exports.selectAll = selectAll;
